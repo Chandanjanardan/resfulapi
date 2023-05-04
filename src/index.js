@@ -10,10 +10,16 @@ app.get("/",(req,res)=>{
     res.send("Hello home page")
 })
 // create a new student
-app.post("/students",(req,res)=>{
-    console.log(req.body)
+app.post("/register",(req,res)=>{
+    console.log(req.body);
+    const user= new Student(req.body);
+    user.save().then(()=>{
+        res.send(user)
+    }).catch((err)=>{
+        res.send(err)
+    })
     
-    res.send("hello fromnt the server")
+    // res.send("hello fromnt the server")
 })
 
 
